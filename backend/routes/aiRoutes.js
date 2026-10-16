@@ -1,9 +1,9 @@
-// backend/routes/aiRoutes.js
 const express = require('express');
 const router = express.Router();
-const aiController = require('../controllers/aiController');
+const { protect } = require('../middleware/authMiddleware');
+const { responderChat } = require('../ia/chat');
 
-// Ruta del chatbot que conecta con la función del controlador
-router.post('/chat', aiController.atenderConsultaIA);
+// El chat gasta cuota de la API de Gemini: solo usuarios autenticados.
+router.post('/chat', protect, responderChat);
 
 module.exports = router;

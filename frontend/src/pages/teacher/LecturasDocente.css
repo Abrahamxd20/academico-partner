@@ -1,0 +1,44 @@
+.ld-form { padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; }
+
+.ld-dropzone {
+  border: 2px dashed #94a3b8; border-radius: 8px; padding: 28px 16px;
+  text-align: center; color: #64748b; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+}
+.ld-dropzone:hover { border-color: #2b3e70; background: #f8fafc; }
+.ld-dropzone.con-archivo { border-color: #2b3e70; border-style: solid; background: #eef2f7; color: #1e293b; }
+.ld-drop-title { margin: 8px 0 2px; font-weight: 600; font-size: 0.9rem; }
+.ld-drop-sub { margin: 0; font-size: 0.78rem; color: #94a3b8; }
+.ld-archivo-nombre { margin: 8px 0 0; font-weight: 600; font-size: 0.88rem; }
+
+.ld-campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.ld-campo { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: #475569; font-weight: 600; }
+.ld-campo span { font-weight: 400; color: #94a3b8; }
+.ld-campo input {
+  border: 1px solid #cbd5e1; border-radius: 4px; padding: 7px 10px; font-size: 0.85rem; color: #1e293b;
+}
+.ld-campo input:focus { outline: none; border-color: #2b3e70; }
+
+.ld-aviso { padding: 8px 12px; border-radius: 4px; font-size: 0.82rem; }
+.ld-aviso.ok { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.ld-aviso.error { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
+
+.ld-btn-subir {
+  align-self: flex-start; display: flex; align-items: center; gap: 8px;
+  background: #2b3e70; color: #fff; border: none; padding: 9px 18px;
+  border-radius: 4px; font-size: 0.85rem; cursor: pointer;
+}
+.ld-btn-subir:hover:not(:disabled) { background: #1f2d52; }
+.ld-btn-subir:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.ld-estado {
+  display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 0.74rem; font-weight: 600;
+}
+.ld-estado-pub { background: #dcfce7; color: #166534; }
+.ld-estado-arch { background: #f1f5f9; color: #64748b; }
+
+.ld-acciones { display: flex; align-items: center; gap: 10px; }
+.ld-acciones a, .ld-acciones button {
+  background: none; border: none; cursor: pointer; color: #64748b; display: flex; padding: 2px;
+}
+.ld-acciones a:hover, .ld-acciones button:hover { color: #2b3e70; }
+.ld-btn-eliminar:hover { color: #c53030 !important; }

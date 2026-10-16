@@ -1,0 +1,199 @@
+/* ── ConfiguracionDocente.css ──────────────────────────── */
+
+.cfg-card { margin-bottom: 0; }
+
+/* ── Header con icono ───────────────────────────────────── */
+.cfg-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Formulario ─────────────────────────────────────────── */
+.cfg-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Avatar / presentación ──────────────────────────────── */
+.cfg-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0 4px;
+}
+.cfg-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2b3e70, #4a6fa5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 1px;
+}
+.cfg-avatar-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+.cfg-avatar-sub {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ── Grid de 2 columnas ─────────────────────────────────── */
+.cfg-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) {
+  .cfg-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Labels e inputs ────────────────────────────────────── */
+.cfg-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+.cfg-label > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cfg-input {
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 8px 11px;
+  font-size: 0.85rem;
+  color: #1e293b;
+  background: #fff;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+.cfg-input:focus { outline: none; border-color: #2b3e70; }
+.cfg-select { cursor: pointer; }
+
+.cfg-hint {
+  font-size: 0.71rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* ── Separador cambio de contraseña ─────────────────────── */
+.cfg-divider {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2b3e70;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.cfg-divider span {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+/* ── Contraseña con ojo ─────────────────────────────────── */
+.cfg-pass-wrap {
+  position: relative;
+  display: flex;
+}
+.cfg-pass-wrap .cfg-input { flex: 1; padding-right: 36px; }
+.cfg-pass-eye {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  padding: 2px;
+}
+.cfg-pass-eye:hover { color: #2b3e70; }
+
+/* ── Chips de estrategias ───────────────────────────────── */
+.cfg-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.cfg-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cfg-chip:hover { border-color: #2b3e70; color: #2b3e70; background: #eef2f7; }
+.cfg-chip.activo {
+  background: #2b3e70;
+  color: #fff;
+  border-color: #2b3e70;
+}
+
+/* ── Aviso de éxito / error ─────────────────────────────── */
+.cfg-aviso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 5px;
+  font-size: 0.82rem;
+}
+.cfg-aviso-ok    { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.cfg-aviso-error { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
+
+/* ── Footer con botón ───────────────────────────────────── */
+.cfg-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 14px;
+}
+
+.cfg-btn-guardar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #2b3e70;
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cfg-btn-guardar:hover:not(:disabled) { background: #1f2d52; }
+.cfg-btn-guardar:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Spinner ────────────────────────────────────────────── */
+@keyframes cfg-spin { to { transform: rotate(360deg); } }
+.cfg-spin { animation: cfg-spin 0.7s linear infinite; }

@@ -1,0 +1,774 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #3b5998;
+  padding: 20px;
+  gap: 16px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* el scroll vive DENTRO de .main-content, no en toda la página */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background-color: #2b3e70;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1f2d52;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #3b4f84;
+  color: #a0aec0;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.nav-item:hover, .nav-item.active {
+  background-color: #1f2d52;
+  color: #ffffff;
+}
+
+/* Contenido Principal */
+.main-content {
+  flex: 1;
+  background-color: #eef2f7;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto; /* <- ESTA es la barra para subir/bajar que necesitabas */
+  border-radius: 8px;
+}
+
+.top-header {
+  height: 60px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 25px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.dashboard-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-section {
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-header-blue {
+  background-color: #2b3e70;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Círculos de Porcentaje */
+.metrics-circles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding: 20px;
+  gap: 15px;
+  text-align: center;
+}
+
+.circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.circle-outer {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-inner {
+  width: 54px;
+  height: 54px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #1e293b;
+}
+
+.circle-label {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Columnas */
+.grid-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.section-list {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+}
+
+.horizontal-bars {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hbar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hbar-label {
+  font-size: 0.75rem;
+  color: #475569;
+}
+
+.hbar-track {
+  height: 12px;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hbar-fill {
+  height: 100%;
+  background-color: #2b3e70;
+}
+
+/* Calendario */
+.calendar-placeholder {
+  padding: 15px;
+}
+
+.calendar-month {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  color: #2b3e70;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #64748b;
+}
+
+.day-number {
+  padding: 4px;
+  border-radius: 3px;
+  color: #334155;
+}
+
+.day-number.selected {
+  background-color: #2b3e70;
+  color: #ffffff;
+}
+
+/* Barras Verticales */
+.vertical-bars-container {
+  height: 140px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vbar-wrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.vbar-fill {
+  width: 100%;
+  background-color: #2b3e70;
+  border-radius: 2px 2px 0 0;
+}
+
+.vbar-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+/* ===================== ALERTA DE ERROR ===================== */
+.dashboard-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.dashboard-retry-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #c53030;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.dashboard-retry-btn:hover {
+  background-color: #9b2c2c;
+}
+
+.dashboard-empty {
+  padding: 25px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+/* ===================== TABLA DE ACTIVIDAD DE ALUMNOS ===================== */
+.activity-table-wrapper {
+  overflow-x: auto;
+  padding: 0 15px 15px 15px;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.activity-table thead th {
+  text-align: left;
+  color: #64748b;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+}
+
+.activity-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.activity-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+@media print {
+  aside.sidebar, .top-header, .sd-btn-exportar {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+  .dashboard-container {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .metrics-circles-grid {
+    gap: 10px;
+    justify-content: flex-start;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .main-content, .main-content * {
+    visibility: visible;
+  }
+  .main-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+/* MOODLE STYLE NAVIGATION & LAYOUT */
+.moodle-style {
+  display: block; /* Overrides the previous flex layout */
+  height: auto;
+  min-height: 100vh;
+  padding: 0;
+  overflow: auto; /* Allows full page scrolling */
+  background-color: #f8f9fa;
+}
+
+.moodle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0 20px;
+  height: 60px;
+  border-bottom: 1px solid #dee2e6;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mh-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mh-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+.mh-hamburger:hover { background-color: #f1f3f5; }
+
+.mh-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.mh-nav {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.mh-tab {
+  background: none;
+  border: none;
+  color: #495057;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 10px;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.mh-tab:hover {
+  color: #0f6cbf;
+}
+
+.mh-tab.active {
+  color: #0f6cbf;
+  border-bottom-color: #0f6cbf;
+}
+
+.mh-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mh-edit-mode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.mh-icon {
+  color: #495057;
+  cursor: pointer;
+}
+
+.mh-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.mh-user-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #343a40;
+}
+
+.mh-avatar {
+  background-color: #e9ecef;
+  padding: 5px;
+  border-radius: 50%;
+  color: #adb5bd;
+}
+
+/* OVERRIDE OLD MAIN CONTENT */
+.moodle-style .main-content {
+  background-color: transparent;
+  padding: 20px 40px;
+  overflow: visible; /* Scroll is handled by document */
+}
+
+/* MOODLE STATUS BADGE */
+.moodle-status-active {
+  background-color: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+/* TOGGLE SWITCH */
+.toggle-switch {
+  width: 36px;
+  height: 20px;
+  background-color: #ced4da;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.toggle-switch.on {
+  background-color: #0f6cbf;
+}
+.toggle-knob {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.2s;
+}
+.toggle-switch.on .toggle-knob {
+  left: 18px;
+}
+
+
+/* ── Scroll del panel docente: barra siempre visible y cabecera fija ── */
+.moodle-style {
+  height: 100vh;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: scroll; /* la barra se ve siempre, aunque la página sea corta */
+  scrollbar-width: auto;
+  scrollbar-color: #94a3b8 #e2e8f0;
+}
+.moodle-style::-webkit-scrollbar { width: 14px; }
+.moodle-style::-webkit-scrollbar-track { background: #e2e8f0; }
+.moodle-style::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 8px;
+  border: 3px solid #e2e8f0;
+}
+.moodle-style::-webkit-scrollbar-thumb:hover { background: #64748b; }
+.moodle-style .moodle-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.moodle-style .main-content { padding-bottom: 60px; } /* aire al final de la página */@media print {
+  aside.sidebar, .top-header, .sd-btn-exportar {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+  .dashboard-container {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .metrics-circles-grid {
+    gap: 10px;
+    justify-content: flex-start;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .main-content, .main-content * {
+    visibility: visible;
+  }
+  .main-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+/* MOODLE STYLE NAVIGATION & LAYOUT */
+.moodle-style {
+  display: block; /* Overrides the previous flex layout */
+  height: auto;
+  min-height: 100vh;
+  padding: 0;
+  overflow: auto; /* Allows full page scrolling */
+  background-color: #f8f9fa;
+}
+
+.moodle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0 20px;
+  height: 60px;
+  border-bottom: 1px solid #dee2e6;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mh-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mh-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+.mh-hamburger:hover { background-color: #f1f3f5; }
+
+.mh-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.mh-nav {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.mh-tab {
+  background: none;
+  border: none;
+  color: #495057;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 10px;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.mh-tab:hover {
+  color: #0f6cbf;
+}
+
+.mh-tab.active {
+  color: #0f6cbf;
+  border-bottom-color: #0f6cbf;
+}
+
+.mh-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mh-edit-mode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.mh-icon {
+  color: #495057;
+  cursor: pointer;
+}
+
+.mh-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.mh-user-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #343a40;
+}
+
+.mh-avatar {
+  background-color: #e9ecef;
+  padding: 5px;
+  border-radius: 50%;
+  color: #adb5bd;
+}
+
+/* OVERRIDE OLD MAIN CONTENT */
+.moodle-style .main-content {
+  background-color: transparent;
+  padding: 20px 40px;
+  overflow: visible; /* Scroll is handled by document */
+}
+
+/* MOODLE STATUS BADGE */
+.moodle-status-active {
+  background-color: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+/* TOGGLE SWITCH */
+.toggle-switch {
+  width: 36px;
+  height: 20px;
+  background-color: #ced4da;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.toggle-switch.on {
+  background-color: #0f6cbf;
+}
+.toggle-knob {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.2s;
+}
+.toggle-switch.on .toggle-knob {
+  left: 18px;
+}

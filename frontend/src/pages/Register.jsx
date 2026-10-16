@@ -1,26 +1,31 @@
-import { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
-import { Mail, Lock, User, UserCheck, BookOpen, Smartphone } from 'lucide-react';
+import { API_BASE_URL } from '../config';
+import { User, Mail, Lock, BookOpen, Sparkles, UserCheck, Shield, KeyRound } from 'lucide-react';
+import './login.css'; // Reutiliza la misma hoja de estilos
 
 export default function Register() {
   const [formData, setFormData] = useState({
     nombre: '',
+    apellido: '',
     email: '',
+    grado: '',
+    seccion: '',
     password: '',
     rol: 'alumno',
-    grado: '4to Secundaria',
-    seccion: 'A'
+    claveDocente: '',
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const esDocente = formData.rol === 'docente';
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -29,115 +34,189 @@ export default function Register() {
     setLoading(true);
 
     try {
-      // 1. Registra al usuario en el Backend
-      await axios.post('http://localhost:5000/api/auth/register', formData);
-      
-      // 2. Inicia sesión automáticamente con el contexto
-      const userData = await login(formData.email, formData.password);
-      
-      // 3. Redirige a la vista correspondiente según el rol
-      const rol = userData.rol?.toLowerCase();
-      if (rol === 'docente' || rol === 'profesor') {
-        navigate('/teacher/dashboard');
-      } else if (rol === 'admin') {
-        navigate('/admin/users');
-      } else {
-        navigate('/student/reading');
+      // Si no eligió "Docente", no tiene sentido mandar la clave secreta.
+      const payload = { ...formData };
+      if (!esDocente) delete payload.claveDocente;
+
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Error al registrar el usuario');
       }
+
+      navigate('/login');
     } catch (err) {
-      setError(
-        err.response?.data?.message || 'Error al registrar la cuenta'
-      );
+      console.error('Error en el registro:', err);
+      setError(err.message || 'Ocurrió un error al crear la cuenta');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="login-wrapper">
-      {/* Lado Izquierdo: Ilustración */}
-      <div className="login-illustration-side">
-        <div className="illustration-box">
-          <div className="illustration-avatar">
-            <Smartphone size={90} color="#ffffff" />
+    <div className="login-experience-container register-experience-container">
+      {/* Luces de fondo aurora */}
+      <div className="aurora-blob blob-1"></div>
+      <div className="aurora-blob blob-2"></div>
+
+      <div className="glass-login-card">
+        {/* Panel Izquierdo: Branding */}
+        <div className="brand-panel">
+          <div className="brand-badge">
+            <Sparkles size={16} /> IA Educativa
           </div>
-          <div className="illustration-text">
-            <h3>Asistente de Lectura</h3>
-            <p>Comprensión Lectora para 4to de Secundaria</p>
+          <div className="brand-hero">
+            <div className="brand-icon-wrapper">
+              <BookOpen size={36} color="#ffffff" />
+            </div>
+            <h2>Asistente de Lectora</h2>
+            <p>Comprensión Lectora para 4to de Secundaria. Únete para potenciar tu aprendizaje con retroalimentación en tiempo real.</p>
+          </div>
+          <div className="brand-footer">
+            <span>© 2026 Academic Partner</span>
           </div>
         </div>
-      </div>
 
-      {/* Lado Derecho: Formulario de Registro */}
-      <div className="login-form-side">
-        <div className="login-header">
-          <div className="header-icon">
-            <BookOpen size={28} color="#ffffff" />
+        {/* Panel Derecho: Formulario de Registro */}
+        <div className="form-panel">
+          <div className="form-header">
+            <h3>Crear Cuenta</h3>
+            <p>Ingresa tus datos para registrarte en la plataforma</p>
           </div>
-          <h2>Crear Cuenta</h2>
+
+          {error && <div className="modern-error-banner">{error}</div>}
+
+          <form onSubmit={handleSubmit} className="modern-form">
+            <div className="modern-field">
+              <label>Nombre</label>
+              <div className="pill-input-box">
+                <UserCheck className="pill-icon" size={18} />
+                <input
+                  type="text"
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  placeholder="Marcos"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="modern-field">
+              <label>Apellido</label>
+              <div className="pill-input-box">
+                <User className="pill-icon" size={18} />
+                <input
+                  type="text"
+                  name="apellido"
+                  value={formData.apellido}
+                  onChange={handleChange}
+                  placeholder="Pérez"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="modern-field">
+              <label>Correo Electrónico</label>
+              <div className="pill-input-box">
+                <Mail className="pill-icon" size={18} />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="ejemplo@colegio.edu.pe"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="modern-field">
+              <label>Contraseña</label>
+              <div className="pill-input-box">
+                <Lock className="pill-icon" size={18} />
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                  required
+                  minLength={6}
+                />
+              </div>
+            </div>
+
+            <div className="modern-field">
+              <label>Rol</label>
+              <div className="pill-input-box">
+                <Shield className="pill-icon" size={18} />
+                <select
+                  name="rol"
+                  value={formData.rol}
+                  onChange={handleChange}
+                  className="pill-select"
+                >
+                  <option value="alumno">Alumno</option>
+                  <option value="docente">Docente</option>
+                </select>
+              </div>
+            </div>
+                            {!esDocente && (
+              <>
+                <div className="modern-field">
+                  <label>Grado</label>
+                  <div className="pill-input-box">
+                    <input type="text" name="grado" value={formData.grado} onChange={handleChange} placeholder="Ej: 4°" required />
+                  </div>
+                </div>
+                <div className="modern-field">
+                  <label>Sección</label>
+                  <div className="pill-input-box">
+                    <input type="text" name="seccion" value={formData.seccion} onChange={handleChange} placeholder="Ej: A" required />
+                  </div>
+                </div>
+              </>
+            )}
+            {/* Solo aparece si eligió "Docente": clave secreta que confirma que
+                de verdad es profesor y no un alumno intentando registrarse como tal. */}
+            {esDocente && (
+              <div className="modern-field">
+                <label>Clave de Docente</label>
+                <div className="pill-input-box">
+                  <KeyRound className="pill-icon" size={18} />
+                  <input
+                    type="password"
+                    name="claveDocente"
+                    value={formData.claveDocente}
+                    onChange={handleChange}
+                    placeholder="Proporcionada por tu coordinación"
+                    required
+                  />
+                </div>
+              </div>
+            )}
+
+            <button type="submit" className="gradient-btn-submit" disabled={loading}>
+              {loading ? 'Creando cuenta...' : 'Registrarse'}
+            </button>
+          </form>
+
+          <div className="form-footer">
+            <p>
+              ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
+            </p>
+          </div>
         </div>
-
-        {error && <div className="error-banner">{error}</div>}
-
-        <form onSubmit={handleSubmit}>
-          <div className="input-field-group">
-            <User className="input-icon" size={20} />
-            <label>Nombre Completo</label>
-            <input
-              type="text"
-              name="nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              placeholder="Juan Pérez"
-              required
-            />
-          </div>
-
-          <div className="input-field-group">
-            <Mail className="input-icon" size={20} />
-            <label>Correo Electrónico</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="ejemplo@colegio.edu.pe"
-              required
-            />
-          </div>
-
-          <div className="input-field-group">
-            <Lock className="input-icon" size={20} />
-            <label>Contraseña</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-            />
-          </div>
-
-          <div className="input-field-group">
-            <UserCheck className="input-icon" size={20} />
-            <label>Rol</label>
-            <select name="rol" value={formData.rol} onChange={handleChange}>
-              <option value="alumno">Alumno</option>
-              <option value="docente">Docente</option>
-            </select>
-          </div>
-
-          <div className="form-actions">
-            <Link to="/login" className="link-secondary">
-              ¿Ya tienes cuenta? Inicia Sesión
-            </Link>
-          </div>
-
-          <button type="submit" className="btn-purple-submit" disabled={loading}>
-            {loading ? 'Registrando...' : 'Registrarse'}
-          </button>
-        </form>
       </div>
     </div>
   );

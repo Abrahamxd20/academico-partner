@@ -1,0 +1,111 @@
+:root {
+  --bg-dark: #0f172a;       /* Negro/Azul muy oscuro */
+  --card-bg: #1e293b;       /* Gris muy oscuro/Azul noche */
+  --card-border: #334155;   /* Gris medio */
+  --text-main: #f8fafc;     /* Blanco/Gris claro */
+  --text-muted: #94a3b8;    /* Gris secundario */
+  --accent-blue: #3b82f6;   /* Azul primario */
+  --accent-cyan: #0284c7;   /* Azul variante */
+}
+
+.dashboard-container {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-title h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.dashboard-title p {
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.btn-download {
+  background-color: var(--accent-blue);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-download:hover {
+  background-color: #2563eb;
+}
+
+/* Tarjetas de Métricas Rápidas */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.kpi-title {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-blue);
+}
+
+.kpi-subtext {
+  font-size: 0.8rem;
+  color: #10b981; /* Verde éxito breve */
+  margin-top: 0.25rem;
+}
+
+/* Cuadrícula de Gráficos */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.chart-card h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+/* Ocultar la Ficha de Observación en la vista previa del dashboard */
+#ficha-pdf-template {
+  display: none;
+}

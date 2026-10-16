@@ -1,0 +1,346 @@
+/* ── SeccionesDocente.css ─────────────────────────────────── */
+
+.sd-description {
+  padding: 10px 20px 14px;
+  font-size: 0.83rem;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ── Lista de paneles ───────────────────────────────────── */
+.sd-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Panel individual ───────────────────────────────────── */
+.sd-panel {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sd-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: background 0.15s;
+  gap: 12px;
+}
+.sd-panel-header:hover { background: #f8fafc; }
+
+.sd-panel-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sd-panel-icon { color: #2b3e70; flex-shrink: 0; margin-top: 2px; }
+
+.sd-panel-titulo {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sd-panel-meta {
+  display: block;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.sd-badge-pregs {
+  color: #2b3e70;
+  font-weight: 600;
+}
+
+.sd-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Botón IA ───────────────────────────────────────────── */
+.sd-btn-ia {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #2b3e70;
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.sd-btn-ia:hover:not(:disabled) { background: #1f2d52; }
+.sd-btn-ia:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Botón icono ────────────────────────────────────────── */
+.sd-btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.sd-btn-icon:hover { color: #2b3e70; background: #f1f5f9; }
+.sd-btn-icon.danger:hover { color: #c53030; background: #fff5f5; }
+
+/* ── Aviso ──────────────────────────────────────────────── */
+.sd-aviso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  font-size: 0.82rem;
+}
+.sd-aviso-ok { background: #f0fdf4; color: #166534; border-left: 3px solid #16a34a; }
+.sd-aviso-error { background: #fff5f5; color: #c53030; border-left: 3px solid #ef4444; }
+.sd-aviso span { flex: 1; }
+
+/* ── Body del panel ─────────────────────────────────────── */
+.sd-panel-body {
+  padding: 16px 20px 20px;
+  background: #fafbfd;
+  border-top: 1px solid #e2e8f0;
+}
+
+.sd-section-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  margin: 0 0 10px;
+}
+
+/* ── Empty state ────────────────────────────────────────── */
+.sd-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+.sd-empty strong { color: #2b3e70; }
+
+/* ── Tarjeta de pregunta opción múltiple ────────────────── */
+.sd-pregunta-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.sd-pregunta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sd-pregunta-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #2b3e70;
+}
+
+/* ── Labels y textareas ─────────────────────────────────── */
+.sd-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.sd-textarea {
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 0.84rem;
+  color: #1e293b;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  transition: border-color 0.15s;
+}
+.sd-textarea:focus { outline: none; border-color: #2b3e70; }
+.sd-textarea-ref { background: #fffbeb; border-color: #fcd34d; }
+.sd-textarea-ref:focus { border-color: #d97706; }
+
+/* ── Opciones ────────────────────────────────────────────── */
+.sd-opciones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sd-opcion {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #f8fafc;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+.sd-opcion.correcta {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+.sd-opcion-letra {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2b3e70;
+  min-width: 16px;
+}
+.sd-opcion input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  color: #1e293b;
+  min-width: 0;
+}
+.sd-opcion input[type="text"]:focus { outline: none; }
+.sd-opcion input[type="radio"] { cursor: pointer; accent-color: #16a34a; }
+
+.sd-hint {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* ── Pregunta abierta ───────────────────────────────────── */
+.sd-abierta-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.sd-abierta-header { margin-bottom: 10px; }
+
+/* ── Badges nivel ────────────────────────────────────────── */
+.sd-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sd-badge-literal { background: #dbeafe; color: #1d4ed8; }
+.sd-badge-inferencial { background: #fef9c3; color: #92400e; }
+.sd-badge-critico { background: #fce7f3; color: #9d174d; }
+
+/* ── Botón agregar pregunta ──────────────────────────────── */
+.sd-btn-agregar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px dashed #94a3b8;
+  color: #475569;
+  padding: 7px 14px;
+  border-radius: 5px;
+  font-size: 0.81rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  margin-bottom: 6px;
+}
+.sd-btn-agregar:hover { border-color: #2b3e70; color: #2b3e70; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.sd-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.sd-btn-guardar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.sd-btn-guardar:hover:not(:disabled) { background: #15803d; }
+.sd-btn-guardar:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Spinner ─────────────────────────────────────────────── */
+@keyframes sd-spin { to { transform: rotate(360deg); } }
+.sd-spin { animation: sd-spin 0.7s linear infinite; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .sd-opciones-grid { grid-template-columns: 1fr; }
+  .sd-btn-ia { font-size: 0.74rem; padding: 6px 10px; }
+  .sd-panel-titulo { font-size: 0.84rem; }
+}
+/* MOODLE THEME OVERRIDES FOR ACCORDIONS */
+.sd-panel {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  margin-bottom: 10px;
+  box-shadow: none;
+}
+
+.sd-panel-header {
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.sd-panel-titulo {
+  color: #0f6cbf;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.sd-panel-body {
+  background-color: #ffffff;
+  border-top: 1px solid #dee2e6;
+}

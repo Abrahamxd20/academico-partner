@@ -1,17 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const {
-  registerUser,
-  loginUser,
-  getUserProfile,
-} = require('../controllers/authController');
-const { protect } = require('../middleware/authMiddleware');
+const authController = require('../controllers/auth.controller');
+const { protect, soloDocente, soloAdmin } = require('../middleware/authMiddleware');
 
-// Rutas Públicas
-router.post('/register', registerUser);
-router.post('/login', loginUser);
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.post('/google-login', authController.googleLogin);
 
-// Ruta Privada (Requiere Token)
-router.get('/profile', protect, getUserProfile);
+router.get('/me', protect, authController.obtenerPerfil);
+router.put('/me', protect, authController.actualizarPerfil);
+router.put('/me/config', protect, soloDocente, authController.actualizarConfigDocente);
+
+router.get('/users', protect, soloAdmin, authController.listarUsuarios);
+router.post('/users', protect, soloAdmin, authController.crearUsuario);
+router.post('/users/:id/send-credentials', protect, soloAdmin, authController.reenviarCredenciales);
+router.put('/users/:id', protect, soloAdmin, authController.actualizarUsuario);
+router.delete('/users/:id', protect, soloAdmin, authController.eliminarUsuario);
 
 module.exports = router;
